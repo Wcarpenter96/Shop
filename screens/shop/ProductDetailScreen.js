@@ -6,7 +6,8 @@ const ProductDetailScreen = props => {
 
     const productId = props.navigation.getParam('productId');
     console.log(productId)
-    const selectedProduct = useSelector(state => state.products.availableProducts).find(prod => prod.id === productId)
+    const selectedProduct = useSelector(state => state.products.availableProducts)
+        .find(prod => prod.id === productId)
 
     return (
         <View>
@@ -14,6 +15,12 @@ const ProductDetailScreen = props => {
         </View>
     )
 };
+
+ProductDetailScreen.navigationOptions = navData => {
+    return {
+        headerTitle: navData.navigation.getParam('productTitle')
+    }
+}
 
 const styles = StyleSheet.create({
 
